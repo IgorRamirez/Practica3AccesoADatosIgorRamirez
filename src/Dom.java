@@ -23,7 +23,7 @@ public class Dom {
 
     Document doc = null;
 
-    public int abrir_XML_DOM(File fichero) {                                        //doc representa al arbol domm
+    public int abrir_XML_DOM(File fichero) {                                        //doc representa al arbol dommm
 
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  //Se crea un objeto DocumentBuider Factory
