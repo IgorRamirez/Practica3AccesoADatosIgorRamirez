@@ -14,6 +14,8 @@ import javax.swing.JFileChooser;
  */
 public class Panel extends javax.swing.JFrame {
 
+    
+   // Dom gestdom=
     /**
      * Creates new form Panel
      */
