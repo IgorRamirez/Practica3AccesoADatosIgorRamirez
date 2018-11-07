@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import jaxb.Libros;
@@ -32,23 +33,24 @@ public class Jaxb {
     return -1;
     }
 }
-
-}
-
-
-
+        
+        
+        
 public String recorrerJAXByMostrar(){
-String datos_nodo[]=null;
-String cadena_resultado="";
+    String datos_nodo[]=null;
+    String cadena_resultado="";
 //Crea una lista con objetos de tipo libro.
-List<Libros.Libro> lLibros=misLibros.getLibro();
+        List<Libros.Libro> lLibros=misLibros.getLibro();
 //Recorre la lista para sacar los valores.
-for (int i=0; i<lLibros.size(); i++){
-cadena_resultado = cadena_resultado+"\n" + “Publicado en: "
-+lLibros.get(i).getPublicadoEn();
+        for (int i=0; i<lLibros.size(); i++){
+cadena_resultado = cadena_resultado+"\n" + "Publicado en: "+lLibros.get(i).getPublicadoEn();
 cadena_resultado= cadena_resultado + "\n" +"El Título es: " + lLibros.get(i).getTitulo();
 cadena_resultado= cadena_resultado + "\n" +"El Autor es: " + lLibros.get(i).getAutor();
 cadena_resultado = cadena_resultado +"\n ǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦǦ";
-}
+        }
 return cadena_resultado;
+    }
 }
+
+
+
