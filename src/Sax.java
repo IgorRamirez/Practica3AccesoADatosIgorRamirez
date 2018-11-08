@@ -1,8 +1,10 @@
 
-import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 import java.io.File;
+import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import jdk.internal.org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,12 +19,13 @@ public class Sax {
 
     SAXParser parser;
     File ficheroXML;
+    ManejadorSax sh;
 
     public int abrir_XML_SAX(File fichero) {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             parser = factory.newSAXParser();                                    //Se crea un objeto SAXParser para interpretar el documento xml
-            sh = new ManejadorSAX();                                            //Se crea una instancia del manejador que sera el que recorra el 
+            sh = new ManejadorSax();                                            //Se crea una instancia del manejador que sera el que recorra el 
             //documento xml secuencialmente                                     //documento xml secuencialmente
             ficheroXML = fichero;
             return 0;
@@ -37,7 +40,7 @@ public class Sax {
         int ultimoelement;
         String cadena_resultado = "";
 
-        public ManejadorSAX() {
+        public ManejadorSax() {
             ultimoelement = 0;
         }
 
@@ -71,7 +74,7 @@ public class Sax {
         public void characters(char[] ch, int start, int length) throws SAXException {//<titulo> o <autor> entonces se guarda ese texto en la variable correspondiente
 
             if (ultimoelement == 2) {
-                for (int i = start; <length + start; i++) {
+                for (int i = start; i<length + start; i++) {
                     cadena_resultado = cadena_resultado + ch[i];
                 }
             } else if (ultimoelement == 3) {
@@ -83,13 +86,13 @@ public class Sax {
 
     }
 
-    public String recorrerSAX(File fXML, ManejadorSAX sh, SAXParser parser) {
+    public String recorrerSAX(File fXML, ManejadorSax sh, SAXParser parser) {
         try {
-            parser.parse(fXML, sh);
+            parser.parse(fXML ,sh);
             return sh.cadena_resultado;
         } catch (SAXException e) {
             e.printStackTrace();
-            return "Error añ parsear con SAX";
+            return "Error al parsear con SAX";
         } catch (Exception e) {
               e.printStackTrace();
             return "Error al parsear con SAX";
