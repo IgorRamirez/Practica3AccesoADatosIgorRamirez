@@ -22,8 +22,10 @@ import org.w3c.dom.NodeList;
 public class Dom {
 
     Document doc = null;
-
-    public int abrir_XML_DOM(File fichero) {                                    //doc representa al arbol dom
+        int conteador;
+        String salida;
+        NodeList nodelist;
+        public int abrir_XML_DOM(File fichero) {                                    //doc representa al arbol dom
                                                                                 //es public  int porque me realiza comprobaciones
                                                                                 //public void no devuelve nada  
 
@@ -123,5 +125,19 @@ public class Dom {
             return -1;
         }
 
+    }
+    public void modificarDOM (String oldT, String newT){
+    String util = "Titulo";
+    Node node;
+    conteador = 0;                                                              //Inicializo el contadort a 0 para que siempre este vacio al ejecutarlo
+    NodeList listaN = doc.getElementsByTagName(util);                           //Inicializo un nodelist que almacena todoslos nodos existentes que coinciden
+    
+    for (int i =0; i< listaN.getLength(); i++){                                 //for va a listaN
+    node = listaN.item(i);
+        if (node.getTextContent().equalsIgnoreCase(oldT)){
+        node.setTextContent(newT);
+        conteador++;
+        }
+    }
     }
 }
